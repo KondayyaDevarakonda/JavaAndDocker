@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  POSSQLServer:
+    container_name: POSSQLServer
+    image: microsoft/mssql-server-windows-developer
+    networks:
+      - epos-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DockerDB2020   
+      - attach_dbs=[{'dbName':'CategoryDB','dbFiles':['C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\CategoryDB.mdf','C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\CategoryDB_log.ldf']},{'dbName':'ProductDB','dbFiles':['C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\ProductDB.mdf','C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\ProductDB_log.ldf']}]
+    ports:
+      - '1433:1433'
+    volumes:
+      - C:\AzureT\POSSystem\POSDatabase\Volumes\POSSQLServer:C:\AzureT\POSSystem\POSDatabase\SqlData
+
+networks:
+  epos-sqlserver:

@@ -1,0 +1,6 @@
+1589114980532	Rename resource 'DockerFile'
+1589117488470	Rename type 'ICategoryDao'
+1589117524226	Rename type 'CategoryDaoImpl'
+1589117559943	Rename type 'Category'
+1589117580019	Rename type 'CategoryServiceImpl'
+1589117601336	Rename type 'ICategoryService'

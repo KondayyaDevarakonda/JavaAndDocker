@@ -1,0 +1,49 @@
+package com.epos.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.epos.model.Category;
+import com.epos.service.ICategoryService;
+
+@RestController
+public class CategoryController {
+	
+	@Autowired
+	ICategoryService categoryService;
+	
+	@GetMapping("/categories")
+	public List<Category> getCategories() {
+		return categoryService.GetCategories();
+	}
+	
+	@GetMapping("/categories/{categoryId}")
+	//@RequestMapping(value = "/categories/{categoryId}", method = RequestMethod.GET, @PathVariable(value = "id") Long noteId)
+	public Category getCategories(@PathVariable(value = "categoryId") Long categoryId) {
+		return categoryService.GetCategoryByID(categoryId);
+	}
+	
+	@PostMapping("/notes")
+	public void InsertCategory(@Valid @RequestBody Category category) {
+		categoryService.CreateCategory(category);
+	}
+	
+	@PutMapping("/notes/{categoryId}")
+	public void DeleteCategory(@PathVariable(value = "id") Long categoryId,
+            @Valid @RequestBody Category category) {
+		categoryService.InsertCategory(category);
+	}
+
+}

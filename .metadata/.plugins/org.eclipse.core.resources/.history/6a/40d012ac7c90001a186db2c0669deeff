@@ -1,0 +1,19 @@
+package com.epos.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.epos.model.Category;
+
+public interface ICategoryService {
+	List<Category> GetCategories();
+	
+	Optional<Category> GetCategoryByID(Long categoryId);
+    
+	Category InsertCategory(Category category);
+    
+    Category DeleteCategory(Long categoryId);
+    
+    Category UpdateCategory(Category category);
+    
+}

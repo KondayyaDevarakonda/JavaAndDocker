@@ -1,0 +1,55 @@
+package com.epos.serviceImpl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.epos.dao.IBrandDao;
+import com.epos.model.Brand;
+import com.epos.service.IBrandService;
+
+@Service
+public class BrandServiceImpl implements IBrandService {
+	
+	@Autowired
+	IBrandDao brandDao;
+
+	@Override
+	public List<Brand> GetCategories() {
+		// TODO Auto-generated method stub
+		return brandDao.findAll();
+	}
+
+	@Override
+	public Brand GetCategoryByID(Long categoryId) {
+		// TODO Auto-generated method stub
+		return brandDao.findById(categoryId).orElse(null);
+	}
+
+	@Override
+	public Brand CreateCategory(Brand category) {
+		category.setCreatedBy("Test User");	
+		category.setCreatedDate(new Date());
+		return brandDao.save(category);
+	}
+
+	@Override
+	public ResponseEntity<?> DeleteCategory(Long categoryId) {
+		Brand category = brandDao.findById(categoryId).orElse(null);
+		brandDao.delete(category);
+		return ResponseEntity.ok().build();
+	}
+
+	@Override
+	public Brand UpdateCategory(Long categoryId, Brand categoryResponse) {
+		Brand category = brandDao.findById(categoryId).orElse(null);
+		category.setCategoryCode(categoryResponse.getCategoryCode());
+		category.setCategoryName(categoryResponse.getCategoryName());
+		category.setActive(categoryResponse.isActive());
+		
+		return brandDao.save(category);
+	}
+}

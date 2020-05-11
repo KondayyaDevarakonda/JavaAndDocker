@@ -1,0 +1,20 @@
+package com.epos.service;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.epos.model.Product;
+
+public interface ICategoryService {
+	List<Product> GetCategories();
+	
+	Product GetCategoryByID(Long categoryId);
+    
+	Product CreateCategory(Product category);
+    
+	ResponseEntity<?> DeleteCategory(Long categoryId);
+    
+    Product UpdateCategory(Long categoryId, Product categoryResponse);
+    
+}

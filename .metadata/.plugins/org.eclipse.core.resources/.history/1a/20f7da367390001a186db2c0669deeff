@@ -1,0 +1,5 @@
+package com.epos.dao;
+
+public interface ICategoryDao {
+
+}

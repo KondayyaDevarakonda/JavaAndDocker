@@ -1,0 +1,10 @@
+package com.epos.controller;
+@RestController
+public class HelloController {
+ 
+	@RequestMapping("/hello")
+	public String index() {
+		return "Spring Boot Example!!";
+	}
+ 
+}

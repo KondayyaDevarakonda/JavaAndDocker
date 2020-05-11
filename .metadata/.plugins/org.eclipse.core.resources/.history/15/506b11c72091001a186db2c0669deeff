@@ -1,0 +1,21 @@
+package com.epos.categoryapi;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+//@EnableAutoConfiguration
+@SpringBootApplication
+@ComponentScan(basePackages={"com.epos","com.epos.dao"})
+@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+public class CategoryApiApplication {
+
+	public static void main(String[] args) {
+		System.out.println("Started------------------");
+		SpringApplication.run(CategoryApiApplication.class, args);
+		System.out.println("Ended------------------");
+	}
+
+}

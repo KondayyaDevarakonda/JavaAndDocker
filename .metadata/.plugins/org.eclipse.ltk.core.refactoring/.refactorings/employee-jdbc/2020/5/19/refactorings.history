@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;category-api&apos;&#x0D;&#x0A;- Original project: &apos;employee-jdbc&apos;&#x0D;&#x0A;- Destination element: &apos;category-api&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Dockerfile&#x0D;&#x0A;     docker-compose.yml" description="Copy files" element1="Dockerfile" element2="docker-compose.yml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1588943514811" target="/category-api" units="0" version="1.0"/>
+</session>

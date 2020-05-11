@@ -1,0 +1,30 @@
+version: '3.7'
+services:    
+  brand-api:
+    image: brand-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8182:8080"
+    networks:
+      - eservices-sqlserver
+    depends_on:
+      - POSSQLServer
+   
+  POSSQLServer:
+    container_name: POSSQLServer
+    image: microsoft/mssql-server-windows-developer
+    networks:
+      - eservices-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DockerDB2020   
+      - attach_dbs=[{'dbName':'CategoryDB','dbFiles':['C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\CategoryDB.mdf','C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\CategoryDB_log.ldf']},{'dbName':'BrandDB','dbFiles':['C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\BrandDB.mdf','C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\BrandDB_log.ldf']},{'dbName':'ProductDB','dbFiles':['C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\ProductDB.mdf','C:\\AzureT\\POSSystem\\POSDatabase\\SQLData\\ProductDB_log.ldf']}]
+    ports:
+      - '1433:1433'
+    volumes:
+      - C:\AzureT\POSSystem\POSDatabase\Volumes\POSSQLServer:C:\AzureT\POSSystem\POSDatabase\SqlData
+
+networks:
+  eservices-sqlserver:

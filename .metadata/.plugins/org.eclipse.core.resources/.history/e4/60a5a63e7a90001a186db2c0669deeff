@@ -1,0 +1,54 @@
+package com.epos.serviceImpl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.epos.dao.ICategoryDao;
+import com.epos.model.Category;
+import com.epos.service.ICategoryService;
+
+public class CategoryService implements ICategoryService {
+	
+	@Autowired
+	ICategoryDao categoryDao;
+
+	@Override
+	public List<Category> GetCategories() {
+		// TODO Auto-generated method stub
+		return categoryDao.findAll();
+	}
+
+	@Override
+	public Optional<Category> GetCategoryByID(Long categoryId) {
+		// TODO Auto-generated method stub
+		return categoryDao.findById(categoryId);
+	}
+
+	@Override
+	public void InsertCategory(Category category) {
+		category.setCreatedBy("Test User");	
+		category.setCreatedDate(new Date());
+		categoryDao.save(category);
+	}
+
+	@Override
+	public void DeleteCategory(Long categoryId) {
+		categoryDao.deleteById(categoryId);
+	}
+
+	@Override
+	public void UpdateCategory(Category category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;categoryDao&apos; in &apos;com.epos.serviceImpl.BrandServiceImpl&apos; to &apos;brandDao&apos;&#x0D;&#x0A;- Original project: &apos;brand-api&apos;&#x0D;&#x0A;- Original element: &apos;com.epos.serviceImpl.BrandServiceImpl.categoryDao&apos;&#x0D;&#x0A;- Renamed element: &apos;com.epos.serviceImpl.BrandServiceImpl.brandDao&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;categoryDao&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java&lt;com.epos.serviceImpl{BrandServiceImpl.java[BrandServiceImpl^categoryDao" name="brandDao" references="true" setter="false" stamp="1589189889856" textual="false" version="1.0"/>
+</session>

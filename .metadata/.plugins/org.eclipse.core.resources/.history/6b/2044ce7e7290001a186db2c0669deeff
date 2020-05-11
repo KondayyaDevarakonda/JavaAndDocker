@@ -1,0 +1,5 @@
+package com.epos.model;
+
+public class Category {
+
+}

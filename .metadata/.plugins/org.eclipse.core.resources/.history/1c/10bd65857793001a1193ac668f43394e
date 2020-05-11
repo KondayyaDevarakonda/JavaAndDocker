@@ -1,0 +1,12 @@
+spring.datasource.url=jdbc:sqlserver://POSSQLServer;databaseName=CategoryDB
+#spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=CategoryDB
+spring.datasource.username=sa
+spring.datasource.password=DockerDB2020
+spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.DefaultNamingStrategy
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+#Use port for local testing
+server.port=8183

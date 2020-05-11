@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  category-api:
+    image: category-api
+    build:
+      context: ./category-api
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8080"
+    networks:
+      - eservices-sqlserver
+    depends_on:
+      - POSSQLServer
+    
+  brand-api:
+    image: brand-api
+    build:
+      context: ./brand-api
+      dockerfile: Dockerfile
+    ports:
+      - "8182:8080"
+    networks:
+      - eservices-sqlserver
+    depends_on:
+      - POSSQLServer
+
+  product-api:
+    image: product-api
+    build:
+      context: ./product-api
+      dockerfile: Dockerfile
+    ports:
+      - "8183:8080"
+    networks:
+      - eservices-sqlserver
+    depends_on:
+      - POSSQLServer
+   
+  POSSQLServer:
+    container_name: POSSQLServer
+    image: microsoft/mssql-server-windows-developer
+    networks:
+      - eservices-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=DockerDB2020   
+      - attach_dbs= [{'dbName':'CategoryDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\CategoryDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\CategoryDB_log.ldf']},{'dbName':'BrandDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\BrandDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\BrandDB_log.ldf']},{'dbName':'ProductDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\ProductDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\ProductDB_log.ldf']}]
+    ports:
+      - '1433:1433'
+    volumes:
+      - C:\JavaAndDocker\POSDatabase\Volumes\POSSQLServer:C:\JavaAndDocker\POSDatabase\SqlData
+
+networks:
+  eservices-sqlserver:
