@@ -1,0 +1,14 @@
+C:\JavaAndDocker\subcategory-api\bin\Debug\netcoreapp2.1\subcategoryapi.deps.json
+C:\JavaAndDocker\subcategory-api\bin\Debug\netcoreapp2.1\subcategoryapi.runtimeconfig.json
+C:\JavaAndDocker\subcategory-api\bin\Debug\netcoreapp2.1\subcategoryapi.runtimeconfig.dev.json
+C:\JavaAndDocker\subcategory-api\bin\Debug\netcoreapp2.1\subcategoryapi.dll
+C:\JavaAndDocker\subcategory-api\bin\Debug\netcoreapp2.1\subcategoryapi.pdb
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.csproj.CoreCompileInputs.cache
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.RazorAssemblyInfo.cache
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.RazorAssemblyInfo.cs
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.AssemblyInfoInputs.cache
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.AssemblyInfo.cs
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.RazorTargetAssemblyInfo.cache
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.dll
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.pdb
+C:\JavaAndDocker\subcategory-api\obj\Debug\netcoreapp2.1\subcategoryapi.csprojAssemblyReference.cache

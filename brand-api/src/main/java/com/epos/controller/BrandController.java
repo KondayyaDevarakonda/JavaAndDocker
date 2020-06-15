@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.epos.model.Brand;
 import com.epos.service.IBrandService;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class BrandController {
@@ -45,10 +47,9 @@ public class BrandController {
 		return brandService.CreateBrand(brand);
 	}
 
-	@PutMapping("/brands/{brandId}")
-	public Brand updateBrand(@PathVariable(value = "brandId") Long brandId,
-            @Valid @RequestBody Brand brand) {
-		return brandService.UpdateBrand(brandId, brand);
+	@PutMapping("/brands")
+	public Brand updateBrand(@Valid @RequestBody Brand brand) {
+		return brandService.UpdateBrand(brand);
 	}
 	
 	@DeleteMapping("/brands/{brandId}")

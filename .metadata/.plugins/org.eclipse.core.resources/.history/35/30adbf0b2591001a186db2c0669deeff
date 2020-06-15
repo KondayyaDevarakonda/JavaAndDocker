@@ -1,7 +1,0 @@
-spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=CategoryDB
-spring.datasource.username=sa
-spring.datasource.password=DockerDB2020
-spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
-spring.jpa.show-sql=true
-
-server.port=8181

@@ -15,6 +15,6 @@ public interface IProductService {
     
 	ResponseEntity<?> DeleteProduct(Long productId);
     
-    Product UpdateProduct(Long productId, Product productResponse);
+    Product UpdateProduct(Product productResponse);
     
 }

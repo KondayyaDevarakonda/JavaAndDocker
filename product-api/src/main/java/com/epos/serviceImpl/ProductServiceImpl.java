@@ -1,8 +1,12 @@
 package com.epos.serviceImpl;
 
-import java.util.Date;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
+import org.hibernate.engine.internal.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,8 +23,11 @@ public class ProductServiceImpl implements IProductService {
 
 	@Override
 	public List<Product> GetProducts() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
 		return productDao.findAll();
+//		return productDao.findAll().stream()
+//				  .sorted(Comparator.comparing(Product::getProductName))
+//				  .collect(Collectors.toList());
 	}
 
 	@Override
@@ -31,8 +38,8 @@ public class ProductServiceImpl implements IProductService {
 
 	@Override
 	public Product CreateProduct(Product product) {
-		product.setCreatedBy("Test User");	
-		product.setCreatedDate(new Date());
+		product.setCreatedBy(product.getCreatedBy());	
+		product.setCreatedDate(product.getCreatedDate());
 		return productDao.save(product);
 	}
 
@@ -44,11 +51,14 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 	@Override
-	public Product UpdateProduct(Long productId, Product productResponse) {
-		Product product = productDao.findById(productId).orElse(null);
+	public Product UpdateProduct(Product productResponse) {
+		Product product = productDao.findById(productResponse.getProductId()).orElse(null);
 		product.setProductName(productResponse.getProductName());
-		product.setBrandId(productResponse.getBrandId());
 		product.setCategoryId(productResponse.getCategoryId());
+		product.setSubCategoryId(productResponse.getSubCategoryId());
+		product.setBrandId(productResponse.getBrandId());
+		product.setModleYear(productResponse.getModleYear());
+		product.setListPrice(productResponse.getListPrice());
 		product.setActive(productResponse.isActive());
 		
 		return productDao.save(product);

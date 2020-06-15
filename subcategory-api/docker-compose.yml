@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  subcategory-api:
+    image: ${DOCKER_REGISTRY-}subcategoryapi
+    build:
+      context: .
+      dockerfile: Dockerfile

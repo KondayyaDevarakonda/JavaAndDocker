@@ -17,7 +17,7 @@ public class Category  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CategoryId", nullable = false)
 	private Long categoryId;
 	
@@ -27,11 +27,11 @@ public class Category  implements Serializable {
 	@Column(name = "CategoryName", nullable = false)
 	private String categoryName;
 	
-	@Column(name = "IsActive", nullable = false)
-	private boolean isActive;
+	@Column(name = "IsActive", columnDefinition="BIT" , nullable = false)
+	private Boolean isActive;
 	
 	@Column(name = "CreatedBy", nullable = false)
-	private String createdBy;
+	private Integer createdBy;
 	
 	@Column(name = "CreatedDate", nullable = false)
 	private Date createdDate;
@@ -60,19 +60,19 @@ public class Category  implements Serializable {
 		this.categoryName = categoryName;
 	}
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
-	public String getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 

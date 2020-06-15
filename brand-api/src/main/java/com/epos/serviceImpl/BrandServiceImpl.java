@@ -31,14 +31,14 @@ public class BrandServiceImpl implements IBrandService {
 
 	@Override
 	public Brand CreateBrand(Brand brand) {
-		brand.setCreatedBy("Test User");	
-		brand.setCreatedDate(new Date());
+		brand.setCreatedBy(brand.getCreatedBy());	
+		brand.setCreatedDate(brand.getCreatedDate());
 		return brandDao.save(brand);
 	}
 
 	@Override
-	public Brand UpdateBrand(Long brandId, Brand brandResponse) {
-		Brand category = brandDao.findById(brandId).orElse(null);
+	public Brand UpdateBrand(Brand brandResponse) {
+		Brand category = brandDao.findById(brandResponse.getBrandId()).orElse(null);
 		category.setBrandName(brandResponse.getBrandName());
 		category.setActive(brandResponse.isActive());
 		

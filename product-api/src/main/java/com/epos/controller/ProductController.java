@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.epos.model.Product;
 import com.epos.service.IProductService;
 
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class ProductController {
@@ -46,10 +47,9 @@ public class ProductController {
 		productService.CreateProduct(product);
 	}
 	
-	@PutMapping("/products/{productId}")
-	public Product updateProduct(@PathVariable(value = "productId") Long productId,
-            @Valid @RequestBody Product product) {
-		return productService.UpdateProduct(productId, product);
+	@PutMapping("/products")
+	public Product updateProduct(@Valid @RequestBody Product product) {
+		return productService.UpdateProduct(product);
 	}
 	
 	@DeleteMapping("/products/{productId}")

@@ -13,7 +13,7 @@ public interface IBrandService {
     
 	Brand CreateBrand(Brand brand);
     
-	Brand UpdateBrand(Long brandId, Brand brandResponse);
+	Brand UpdateBrand(Brand brandResponse);
 	
 	ResponseEntity<?> DeleteBrand(Long brandId);
     

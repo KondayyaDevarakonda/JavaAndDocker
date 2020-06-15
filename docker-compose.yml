@@ -1,5 +1,6 @@
 version: '3.7'
 services:
+     
   category-api:
     image: category-api
     build:
@@ -10,8 +11,8 @@ services:
     networks:
       - eservices-sqlserver
     depends_on:
-      - POSSQLServer
-    
+      - SQLServer 
+
   brand-api:
     image: brand-api
     build:
@@ -22,7 +23,7 @@ services:
     networks:
       - eservices-sqlserver
     depends_on:
-      - POSSQLServer
+      - SQLServer
 
   product-api:
     image: product-api
@@ -34,21 +35,31 @@ services:
     networks:
       - eservices-sqlserver
     depends_on:
-      - POSSQLServer
-   
-  POSSQLServer:
-    container_name: POSSQLServer
+      - SQLServer
+      
+  subcategoryapi:
+    image: subcategoryapi
+    build:
+      context: ./DotNetServices/subcategoryapi
+      dockerfile: Dockerfile
+    ports:
+      - "8184:80"
+    networks:
+      - eservices-sqlserver
+
+  SQLServer:
+    container_name: SQLServer
     image: microsoft/mssql-server-windows-developer
     networks:
       - eservices-sqlserver
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=DockerDB2020   
-      - attach_dbs= [{'dbName':'CategoryDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\CategoryDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\CategoryDB_log.ldf']},{'dbName':'BrandDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\BrandDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\BrandDB_log.ldf']},{'dbName':'ProductDB','dbFiles':['C:\\JavaAndDocker\\POSDatabase\\SQLData\\ProductDB.mdf','C:\\JavaAndDocker\\POSDatabase\\SQLData\\ProductDB_log.ldf']}]
+      - attach_dbs=[{'dbName':'UserDB','dbFiles':['C:\\JavaAndDocker\\DockerDB\\SQLData\\UserDB.mdf','C:\\JavaAndDocker\\DockerDB\\SQLData\\UserDB_log.ldf']},{'dbName':'CategoryDB','dbFiles':['C:\\JavaAndDocker\\DockerDB\\SQLData\\CategoryDB.mdf','C:\\JavaAndDocker\\DockerDB\\SQLData\\CategoryDB_log.ldf']},{'dbName':'SubCategoryDB','dbFiles':['C:\\JavaAndDocker\\DockerDB\\SQLData\\SubCategoryDB.mdf','C:\\JavaAndDocker\\DockerDB\\SQLData\\SubCategoryDB_log.ldf']},{'dbName':'BrandDB','dbFiles':['C:\\JavaAndDocker\\DockerDB\\SQLData\\BrandDB.mdf','C:\\JavaAndDocker\\DockerDB\\SQLData\\BrandDB_log.ldf']},{'dbName':'ProductDB','dbFiles':['C:\\JavaAndDocker\\DockerDB\\SQLData\\ProductDB.mdf','C:\\JavaAndDocker\\DockerDB\\SQLData\\ProductDB_log.ldf']}]
     ports:
       - '1433:1433'
     volumes:
-      - C:\JavaAndDocker\POSDatabase\Volumes\POSSQLServer:C:\JavaAndDocker\POSDatabase\SqlData
-
+      - C:\JavaAndDocker\DockerDB\Volumes\POSSQLServer:C:\JavaAndDocker\DockerDB\SqlData
+      
 networks:
   eservices-sqlserver:

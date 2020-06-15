@@ -1,5 +1,0 @@
-package com.epos.service;
-
-public interface ICategoryService {
-
-}

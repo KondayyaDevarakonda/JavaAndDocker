@@ -1,0 +1,7 @@
+services:
+  subcategory-api:
+    build:
+      context: C:\JavaAndDocker\subcategory-api
+      dockerfile: Dockerfile
+    image: subcategoryapi
+version: '3.4'

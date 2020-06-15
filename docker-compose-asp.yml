@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  subcategoryapi:
+    image: subcategoryapi
+    build:
+      context: ./DotNetServices/subcategoryapi
+      dockerfile: Dockerfile
+    ports:
+      - "8184:80"

@@ -17,18 +17,18 @@ public class Brand implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "BrandId", nullable = false)
 	private Long brandId;
 	
 	@Column(name = "BrandName", nullable = false)
 	private String brandName;
 	
-	@Column(name = "IsActive", nullable = false)
-	private boolean isActive;
+	@Column(name = "IsActive", columnDefinition="BIT" , nullable = false)
+	private Boolean isActive;
 	
 	@Column(name = "CreatedBy", nullable = false)
-	private String createdBy;
+	private Integer createdBy;
 	
 	@Column(name = "CreatedDate", nullable = false)
 	private Date createdDate;
@@ -57,11 +57,11 @@ public class Brand implements Serializable {
 		this.isActive = isActive;
 	}
 
-	public String getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 

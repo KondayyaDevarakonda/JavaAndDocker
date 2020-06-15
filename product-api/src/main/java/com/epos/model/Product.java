@@ -18,18 +18,21 @@ public class Product  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ProductId", nullable = false)
 	private Long productId;
 	
 	@Column(name = "ProductName", nullable = false)
 	private String productName;
 	
+	@Column(name = "CategoryId", nullable = false)
+	private Long categoryId;
+	
+	@Column(name = "SubCategoryId", nullable = false)
+	private Long subCategoryId;
+	
 	@Column(name = "BrandId", nullable = false)
 	private Long brandId;
-	
-	@Column(name = "CategoryId", nullable = false)
-	private String categoryId;
 	
 	@Column(name = "ModleYear", nullable = false)
 	private Integer modleYear;
@@ -37,11 +40,11 @@ public class Product  implements Serializable {
 	@Column(name = "ListPrice", nullable = false)
 	private BigDecimal listPrice;
 	
-	@Column(name = "IsActive", nullable = false)
-	private boolean isActive;
+	@Column(name = "IsActive", columnDefinition="BIT" , nullable = false)
+	private Boolean isActive;
 	
 	@Column(name = "CreatedBy", nullable = false)
-	private String createdBy;
+	private Integer createdBy;
 	
 	@Column(name = "CreatedDate", nullable = false)
 	private Date createdDate;
@@ -62,20 +65,28 @@ public class Product  implements Serializable {
 		this.productName = productName;
 	}
 
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	public Long getSubCategoryId() {
+		return subCategoryId;
+	}
+
+	public void setSubCategoryId(Long subCategoryId) {
+		this.subCategoryId = subCategoryId;
+	}
+	
 	public Long getBrandId() {
 		return brandId;
 	}
 
 	public void setBrandId(Long brandId) {
 		this.brandId = brandId;
-	}
-
-	public String getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
 	}
 
 	public Integer getModleYear() {
@@ -102,11 +113,11 @@ public class Product  implements Serializable {
 		this.isActive = isActive;
 	}
 
-	public String getCreatedBy() {
+	public Integer getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(String createdBy) {
+	public void setCreatedBy(Integer createdBy) {
 		this.createdBy = createdBy;
 	}
 
@@ -120,8 +131,11 @@ public class Product  implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Products [productId=" + productId + ", productName=" + productName + ", brandId=" + brandId
-				+ ", categoryId=" + categoryId + ", modleYear=" + modleYear + ", listPrice=" + listPrice + ", isActive="
-				+ isActive + ", createdBy=" + createdBy + ", createdDate=" + createdDate + "]";
-	}	
+		return "Product [productId=" + productId + ", productName=" + productName + ", categoryId=" + categoryId
+				+ ", subCategoryId=" + subCategoryId + ", brandId=" + brandId + ", modleYear=" + modleYear
+				+ ", listPrice=" + listPrice + ", isActive=" + isActive + ", createdBy=" + createdBy + ", createdDate="
+				+ createdDate + "]";
+	}
+
+	
 }

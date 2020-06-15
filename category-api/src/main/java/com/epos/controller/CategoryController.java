@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.epos.model.Category;
 import com.epos.service.ICategoryService;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class CategoryController {
@@ -49,10 +51,9 @@ public class CategoryController {
 		categoryService.CreateCategory(category);
 	}
 	
-	@PutMapping("/categories/{categoryId}")
-	public Category updateCategory(@PathVariable(value = "categoryId") Long categoryId,
-            @Valid @RequestBody Category category) {
-		return categoryService.UpdateCategory(categoryId, category);
+	@PutMapping("/categories")
+	public Category updateCategory(@Valid @RequestBody Category category) {
+		return categoryService.UpdateCategory(category);
 	}
 	
 	@DeleteMapping("/categories/{categoryId}")

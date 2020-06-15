@@ -31,8 +31,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public Category CreateCategory(Category category) {
-		category.setCreatedBy("Test User");	
-		category.setCreatedDate(new Date());
+		category.setCreatedBy(category.getCreatedBy());	
+		category.setCreatedDate(category.getCreatedDate());
 		return categoryDao.save(category);
 	}
 
@@ -44,8 +44,8 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 
 	@Override
-	public Category UpdateCategory(Long categoryId, Category categoryResponse) {
-		Category category = categoryDao.findById(categoryId).orElse(null);
+	public Category UpdateCategory(Category categoryResponse) {
+		Category category = categoryDao.findById(categoryResponse.getCategoryId()).orElse(null);
 		category.setCategoryCode(categoryResponse.getCategoryCode());
 		category.setCategoryName(categoryResponse.getCategoryName());
 		category.setActive(categoryResponse.isActive());
