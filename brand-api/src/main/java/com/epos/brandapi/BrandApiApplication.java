@@ -15,7 +15,7 @@ public class BrandApiApplication {
 	public static void main(String[] args) {
 		System.out.println("Brand Api Started");
 		SpringApplication.run(BrandApiApplication.class, args);
-		System.out.println("Brand Api Started");
+		System.out.println("Brand Api Ended");
 	}
 
 }
