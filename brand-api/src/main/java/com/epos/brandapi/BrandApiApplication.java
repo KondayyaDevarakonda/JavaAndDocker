@@ -13,7 +13,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BrandApiApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Brand Api Started");
 		SpringApplication.run(BrandApiApplication.class, args);
+		System.out.println("Brand Api Started");
 	}
 
 }
