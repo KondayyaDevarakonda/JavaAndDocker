@@ -2,7 +2,7 @@ version: '3.7'
 services:
      
   category-api:
-    image: mydockercont2020/category-api
+    image: category-api
     build:
       context: ./category-api
       dockerfile: Dockerfile
@@ -14,7 +14,7 @@ services:
       - SQLServer 
 
   brand-api:
-    image: mydockercont2020/brand-api
+    image: brand-api
     build:
       context: ./brand-api
       dockerfile: Dockerfile
@@ -26,7 +26,7 @@ services:
       - SQLServer
 
   product-api:
-    image: mydockercont2020/product-api
+    image: product-api
     build:
       context: ./product-api
       dockerfile: Dockerfile
@@ -38,7 +38,7 @@ services:
       - SQLServer
       
   subcategoryapi:
-    image: mydockercont2020/subcategoryapi
+    image: subcategoryapi
     build:
       context: ./DotNetServices/subcategoryapi
       dockerfile: Dockerfile
@@ -46,6 +46,8 @@ services:
       - "8184:80"
     networks:
       - eservices-sqlserver
+    depends_on:
+      - SQLServer
 
   SQLServer:
     container_name: SQLServer
