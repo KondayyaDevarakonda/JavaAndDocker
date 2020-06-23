@@ -1,9 +1,8 @@
-import React from 'react';
-//import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-//import { Layout } from './components/Layout';
 import { Home } from './components/Home';
+import { About } from './components/About';
 import ListCategoryComponent from './components/category/ListCategoryComponent';
 import AddCategoryComponent from './components/category/AddCategoryComponent';
 import EditCategoryComponent from './components/category/EditCategoryComponent';
@@ -13,24 +12,55 @@ import EditBrandComponent from './components/brand/EditBrandComponent';
 import ListProductComponent from './components/product/ListProductComponent';
 import AddProductComponent from './components/product/AddProductComponent';
 import EditProductComponent from './components/product/EditProductComponent';
-
 import ListSubCategoryComponent from './components/subcategory/ListSubCategoryComponent';
 import AddSubCategoryComponent from './components/subcategory/AddSubCategoryComponent';
 import EditSubCategoryComponent from './components/subcategory/EditSubCategoryComponent';
-
+import LoginUser from './components/user/LoginUser';
+import SignUpUser from './components/user/SignUpUser';
+import LogOutUser from './components/user/LogOutUser';
 import { NavigationBar } from './components/NavigationBar';
 import Sidebar from './components/SideBar';
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import styled from 'styled-components';
+import ApiAuthenticationService from "./services/ApiAuthenticationService";
+const Styles = styled.div`
+  .navbar { background-color: #222; }
+  a, .navbar-nav, .navbar-light .nav-link {
+    color: #9FFFCB;
+    &:hover { color: white; }
+  }
+  .navbar-brand {
+    font-size: 1.4em;
+    color: #9FFFCB;
+    &:hover { color: white; }
+  }
+  .form-center {
+    position: absolute !important;
+    left: 25%;
+    right: 25%;
+  }
+`;
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-function App() {
+  render() {
   return (
     <React.Fragment>
       <Router>
-        <NavigationBar />
+        <NavigationBar />        
 
         <Sidebar />
 
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+
+          <Route exact path="/login-user" component={LoginUser} />
+          <Route exact path="/signup-user" component={SignUpUser} />
+          {/* <Route exact path="/logout-user" component={LogOutUser} /> */}
+
           <Route path="/categories" component={ListCategoryComponent} />
           <Route path="/add-category" component={AddCategoryComponent} />
           <Route path="/edit-category" component={EditCategoryComponent} />
@@ -50,20 +80,7 @@ function App() {
       </Router>
     </React.Fragment>
   );
-  // return (
-  //     <div>
-  //     <Layout>
-  //       <Router> 
-         
-  //           <Route exact path='/' component={Home} />
-  //           <Route path="/categories" component={ListCategoryComponent} />
-  //           <Route path="/add-category" component={AddCategoryComponent} />
-  //           <Route path="/edit-category" component={EditCategoryComponent} />
-         
-  //       </Router>       
-  //     </Layout>
-  //     </div>
-  // );
+}
 }
 
 export default App;

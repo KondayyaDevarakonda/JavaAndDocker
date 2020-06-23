@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link, withRouter } from "react-router-dom";
 
 const StyledSideNav = styled.div`   
-    position: fixed;     /* Fixed Sidebar (stay in place on scroll and position relative to viewport) */
+    position: fixed;     
     height: 100%;
-    width: 160px;     /* Set the width of the sidebar */
-    z-index: 1;      /* Stay on top of everything */
-    top: 3.4em;      /* Stay at the top */
-    background-color: #222; /* Black */
-    overflow-x: hidden;     /* Disable horizontal scroll */
+    width: 160px;     
+    z-index: 1;     
+    top: 3.4em;      
+    background-color: #222; 
+    overflow-x: hidden;     
     padding-top: 10px;
 `;
 
-class SideNav extends React.Component {
+class SideNav extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -48,7 +48,7 @@ class SideNav extends React.Component {
                     name: 'Products',
                     css: 'fa fa-fw fa-home',
                     key: 5
-                  },
+                }                 
               ]
         }
     }
@@ -98,7 +98,7 @@ const StyledNavItem = styled.div`
     }
 `;
 
-class NavItem extends React.Component {
+class NavItem extends Component {
     handleClick = () => {
         const { path, onItemClick } = this.props;
         onItemClick(path);
@@ -116,40 +116,10 @@ class NavItem extends React.Component {
     }
 }
 
-// const NavIcon = styled.div`
-// `;
-
-export default class Sidebar extends React.Component {
+export default class Sidebar extends Component {
     render() {
         return (
             <RouterSideNav></RouterSideNav>
         );
     }
 }
-
-
-
-
-// import React, { Component } from 'react';
-// import { Link, BrowserRouter as Router } from 'react-router-dom';
-// import { Nav, Navbar, NavItem } from 'react-bootstrap';
-// import { LinkContainer } from 'react-router-bootstrap';
-// import './NavBar.css';
-
-// export class SideMenu extends Component {
-//   displayName = SideMenu.name
-
-//   render() {
-//     return (
-//         <div>
-//             <Navbar inverse fixedTop fluid collapseOnSelect>           
-//                 <Nav defaultActiveKey="/" className="flex-column">
-//                     <Nav.Link href="/">Home</Nav.Link>
-//                     <Nav.Link href="/categories">Category</Nav.Link>
-//                     <Nav.Link href="/brands">Brand</Nav.Link>
-//                 </Nav>
-//             </Navbar>
-//         </div>
-//     );
-//   }
-// }
