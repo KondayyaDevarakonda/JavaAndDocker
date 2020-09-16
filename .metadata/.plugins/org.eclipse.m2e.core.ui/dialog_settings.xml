@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\SBHrmsApplication"/>
 			<item value="C:\JavaAndDocker\login-api"/>
 			<item value="C:\workspaceJ\category-api\category-api-test"/>
 			<item value="C:\workspaceJ\category-api-abc"/>
